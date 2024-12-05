@@ -1,12 +1,9 @@
 # custom_vimeo_player
 
 <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/-Flutter-02569B.svg?logo=flutter" alt="Flutter Website" /></a>
-<a href="https://dart.dev"><img src="https://img.shields.io/badge/-Dart-%230175C2.svg?logo=dart
-" alt="Dart Website"/></a>
+<a href="https://dart.dev"><img src="https://img.shields.io/badge/-Dart-%230175C2.svg?logo=dart" alt="Dart Website"/></a>
 <a href="https://developer.android.com"><img src="https://img.shields.io/badge/-android-ffffff.svg?logo=android"/></a>
-<a href="https://developer.apple.com/ios/"><img src="https://img.shields.io/badge/-ios-%23000000.svg?logo=apple
-"/>
-</a>
+<a href="https://developer.apple.com/ios/"><img src="https://img.shields.io/badge/-ios-%23000000.svg?logo=apple"/></a>
 
 A Flutter package for embedding Vimeo videos with customizable playback controls, events handling.
 
