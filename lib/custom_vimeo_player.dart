@@ -1,3 +1,5 @@
+/// A Flutter package for embedding Vimeo videos with customizable playback controls
+/// and event handling capabilities.
 library custom_vimeo_player;
 
 import 'dart:convert';
@@ -6,7 +8,24 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
+/// A widget that embeds a Vimeo video player with customizable controls and event callbacks.
+///
+/// This widget uses InAppWebView to embed Vimeo videos and provides various customization
+/// options and event callbacks for video playback control.
+///
+/// Example usage:
+/// ```dart
+/// CustomVimeoPlayer(
+///   videoId: '<your_video_id>',
+///   autoPlay: true,
+///   onPlay: () => print('Video started playing'),
+/// )
+/// ```
 class CustomVimeoPlayer extends StatelessWidget {
+  /// Creates a custom Vimeo player widget.
+  ///
+  /// The [videoId] parameter is required and must not be null.
+  /// Other parameters are optional and provide various customization options.
   const CustomVimeoPlayer({
     super.key,
     required this.videoId,
@@ -24,18 +43,58 @@ class CustomVimeoPlayer extends StatelessWidget {
     this.onSeeked,
   });
 
+  /// The ID of the Vimeo video to be played.
   final String videoId;
+
+  /// Whether the video should start playing automatically when loaded.
+  ///
+  /// Defaults to `false`.
   final bool autoPlay;
+
+  /// Whether the video should loop after it ends.
+  ///
+  /// Defaults to `false`.
   final bool loop;
+
+  /// Whether the video should start muted.
+  ///
+  /// Defaults to `false`.
   final bool muted;
+
+  /// Whether to show the video title.
+  ///
+  /// Defaults to `false`.
   final bool showTitle;
+
+  /// Whether to show the video byline.
+  ///
+  /// Defaults to `false`.
   final bool showByline;
+
+  /// Whether to show the video playback controls.
+  ///
+  /// Defaults to `true`.
   final bool controls;
+
+  /// Whether to enable Do Not Track (DNT) mode.
+  ///
+  /// When enabled, the player won't track viewing information.
+  /// Defaults to `true`.
   final bool dnt;
+
+  /// Callback function called when the player is ready to play.
   final VoidCallback? onReady;
+
+  /// Callback function called when the video starts playing.
   final VoidCallback? onPlay;
+
+  /// Callback function called when the video is paused.
   final VoidCallback? onPause;
+
+  /// Callback function called when the video playback ends.
   final VoidCallback? onEnd;
+
+  /// Callback function called when the video position is changed.
   final VoidCallback? onSeeked;
 
   @override
@@ -57,6 +116,7 @@ class CustomVimeoPlayer extends StatelessWidget {
     );
   }
 
+  /// Generates the HTML page containing the Vimeo player.
   String _videoPage() {
     final html = '''
      <html>
@@ -124,6 +184,7 @@ class CustomVimeoPlayer extends StatelessWidget {
     return 'data:text/html;base64,${base64Encode(const Utf8Encoder().convert(html))}';
   }
 
+  /// Handles Vimeo player events received from the webview.
   void _handleVimeoEvent(String event) {
     if (event == 'ready') {
       onReady?.call();
@@ -138,6 +199,9 @@ class CustomVimeoPlayer extends StatelessWidget {
     }
   }
 
+  /// Handles URL loading requests in the webview.
+  ///
+  /// On iOS, allows loading of Vimeo player URLs and blocks other navigation.
   Future<NavigationActionPolicy?> _shouldOverrideUrlLoading(
     InAppWebViewController controller,
     NavigationAction navigationAction,
