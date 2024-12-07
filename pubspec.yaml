@@ -1,7 +1,7 @@
 name: custom_vimeo_player
 description: 'A Flutter package for embedding Vimeo videos with customizable playback controls, events handling.'
-version: 1.0.0
-homepage: https://github.com/taiseiiiii
+version: 1.0.1
+homepage: https://github.com/taiseiiiii/custom_vimeo_player
 
 environment:
   sdk: ^3.5.4
